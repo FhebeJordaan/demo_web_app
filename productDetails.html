@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.84.0">
+    <title>Signin Template · Bootstrap v5.0</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sign-in/">
+
+
+
+    <!-- Bootstrap core CSS -->
+    <link href="/app/assets/dist/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+<body style="padding: 50px;">
+    <div class="d-block" style="width: 100%">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <form action="/app/product/save" method="POST">
+
+                    <input class="form-control" id="idProduct" name="idProduct"type="hidden" value="{{product.idProduct}}">
+
+                    {% if message != null && message != undefined %}
+                    <div class="alert bg-danger">
+                        {{message}}
+                    </div>
+                    {% endif %}
+                    <div class="row">
+                        <div class="col-md-8">
+                            <label for="barcode">Barcode</label>
+                            <input class="form-control" id="barcode" name="barcode"
+                                placeholder="64526555121" value="{{product.barcode}}">
+                            
+                            <label for="description">Description</label>
+                            <input class="form-control" id="description" name="description"
+                                placeholder="may contain nuts" value="{{product.description}}">
+
+                            <label for="schedule">Schedule</label>
+                            <input class="form-control" id="schedule" name="schedule" placeholder="e.g. Next week"
+                                value="{{product.schedule}}">
+
+                            <label for="height">Height</label>
+                            <input class="form-control" id="height" name="height" placeholder="e.g. 50cm"
+                                value="{{product.height}}">
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-8">
+                            <label for="length">Length</label>
+                            <input class="form-control" id="length" name="length" placeholder="e.g. 10m"
+                                value="{{product.length}}">
+
+                            <label for="Width">Width</label>
+                            <input class="form-control" id="width" name="width" placeholder="e.g. 37cm"
+                                value="{{product.width}}">
+
+                            <label for="pack">Pack</label>
+                            <input class="form-control" id="pack" name="pack" placeholder="e.g. six pack"
+                                value="{{product.pack}}">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-8">
+                            <label for="weight">Weight</label>
+                            <input class="form-control" id="weight" name="weight" placeholder="e.g. 52kg"
+                                value="{{product.weight}}">
+
+                            <label for="units">Units</label>
+                            <input class="form-control" id="units" name="units" placeholder="e.g. seven units"
+                                value="{{product.units}}">
+
+                            <label for="type">Type</label>
+                            <input class="form-control" id="type" name="type" placeholder="e.g. wood/glass"
+                                value="{{product.type}}">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-8">
+                            <label for="ingredients">Ingredients</label>
+                            <input class="form-control" id="ingredients" name="ingredients" placeholder="e.g. eggs"
+                                value="{{product.ingredients}}">
+
+                            <label for="manufacturer">Manufacturer</label>
+                            <input class="form-control" id="manufacturer" name="manufacturer"
+                                placeholder="e.g. name of manufacturer" value="{{product.manufacturer}}">
+
+                            <label for="directions">Directions</label>
+                            <input class="form-control" id="directions" name="directions" placeholder="e.g. east/west"
+                                value="{{product.directions}}">
+                        </div>
+                    </div>
+                    <br />
+                    <button class="w-100 btn btn-lg btn-primary" type="submit">Save</button>
+                    <br/><br/>
+                    <a class="w-100 btn btn-lg btn-secondary" href="/app/products">Cancel</a>
+
+                </form>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
+</body>
+
+
+</html>

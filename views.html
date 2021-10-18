@@ -1,0 +1,79 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<button onclick='addProduct("/app/product/addproduct");'
+  class="btn btn-lg btn-secondary fw-bold border-white bg-white">Add new product</button>
+  <button onclick="importProducts();" class="btn btn-lg btn-primary fw-bold border-white bg-white">Import products</button>
+
+{% if products != undefined && products.length > 0 %}
+{% for product in products %}
+<div class="row">
+  <div class="column" style="background-color:#aaa;">
+    <h2>{{product.description}}</h2>
+    <p>{{product.Type}}</p>
+    <h2>{{product.schedule}}</h2>
+    <h2>{{product.height}}</h2>
+    <h2>{{product.length}}</h2>
+    <h2>{{product.width}}</h2>
+    <h2>{{product.pack}}</h2>
+    <h2>{{product.weight}}</h2>
+    <h2>{{product.units}}</h2>
+    <h2>{{product.type}}</h2>
+    <h2>{{product.ingredients}}</h2>
+    <h2>{{product.manufacturer}}</h2>
+    <h2>{{product.directions}}</h2>
+
+    <button class="delete" type="button" onclick="deleteProduct('{{product.idProduct}}');">Delete</button>
+    <button class="edit" type="button" onclick="editProduct('{{product.idProduct}}');">Edit</button>
+  </div>
+</div>
+{% endfor %}
+{% endif %}
+<style>
+  /* Create two equal columns that floats next to each other */
+  .column {
+    float: left;
+    width: 50%;
+    padding: 10px;
+  }
+
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+</style>
+
+<script>
+  function addProduct(url) {
+    window.location.replace(url);
+  }
+
+  function deleteProduct(product) {
+    $.post('/app/product/delete', {
+      "product": product
+    }, function (data) {
+      //alert('test');
+      setTimeout(function () {
+        window.location.reload();
+      }, 500);
+    });
+  }
+
+  function editProduct(product) {
+    $.post('/app/product/edit', {
+      "product": product
+    }, function (data) {
+      $('body').html($(data, 'body'));
+      $('body').css('padding', '50px');
+    });
+  }
+
+  function importProducts() {
+    $.post('/app/product/import', null, function() {
+      setTimeout(function () {
+        window.location.reload();
+      }, 500);
+    });
+  }
+</script>
